@@ -85,9 +85,9 @@ WSGI_APPLICATION = "productile.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "productile2",
-        "USER": "postgres",
-        "PASSWORD": "1234",
+        "NAME": env("DATABASE_NAME"),
+        "USER": env("DATABASE_USER"),
+        "PASSWORD":  env("DATABASE_PASS"),
         "HOST": "localhost",
         "PORT": "5432",
     }
