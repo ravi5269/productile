@@ -14,16 +14,17 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+import os
 # env variable
 import environ
+# from dotenv import load_dotenv
+
 
 env = environ.Env()
 environ.Env.read_env()
 
-from dotenv import load_dotenv
-import os
 
-load_dotenv()
+# load_dotenv()
 
 
 # Quick-start development settings - unsuitable for production
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "product",
     "rest_framework",
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +132,19 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+}
+
+REST_FRAMEWORK = {    
+    'DEFAULT_AUTHENTICATION_CLASSES': (    
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2
+}
