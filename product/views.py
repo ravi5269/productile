@@ -8,7 +8,6 @@ from product.models import Product, Category
 
 
 class ProductAPIView(APIView):
-
     def post(self, request):
         try:
             serializer = ProductSerializer(data=request.data)
@@ -114,4 +113,3 @@ class CategoryAPIView(APIView):
         product = get_object_or_404(Category, pk=pk)
         product.delete()
         return Response({"message": "Deleted"})
-
